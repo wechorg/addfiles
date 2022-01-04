@@ -1,0 +1,21 @@
+name: ci
+
+on: [push,workflow_dispatch]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          toke: ${{ secrets.PAT }}
+      - name: Create new file and commit
+        run: |
+           git checkout -b dev
+           touch test.txt
+           git add .
+           git commit -m "some commit"
+           git push origin dev
