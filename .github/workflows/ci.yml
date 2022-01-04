@@ -20,8 +20,8 @@ jobs:
         run: |
            git config --global user.email "actions@example.com"
            git config --global user.name "wechuli"
-           git checkout -b dev
-           touch test.txt
+           git checkout dev
+           echo $GITHUB_RUN_NUMBER >> test.txt
            git add .
            git commit -m "some commit"
            git push origin dev
